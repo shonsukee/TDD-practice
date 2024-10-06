@@ -1,6 +1,6 @@
 package money;
 
-public class Sum implements Expression {
+class Sum implements Expression {
     Money augend;
     Money addend;
 
@@ -9,7 +9,7 @@ public class Sum implements Expression {
         this.addend = addend;
     }
 
-    public Money reduce(String to){
+    public Money reduce(Bank bank, String to){
         int amount = augend.amount + addend.amount;
         return new Money(amount, to);
     }

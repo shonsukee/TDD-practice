@@ -1,6 +1,6 @@
 package money;
 
-public class Money implements Expression {
+class Money implements Expression {
     protected int amount;
     protected String currency;
 
@@ -17,8 +17,9 @@ public class Money implements Expression {
         return new Sum(this, addend);
     }
 
-    public Money reduce(String to){
-        return this;
+    public Money reduce(Bank bank, String to){
+        int rate = bank.rate(currency, to);
+        return new Money(amount / rate, to);
     }
 
     String currency() {
@@ -38,7 +39,7 @@ public class Money implements Expression {
         return new Money(amount, "USD");
     }
 
-    static public Money franc(int amount, String currency) {
-        return new Money(amount, currency);
+    static public Money franc(int amount) {
+        return new Money(amount, "CHF");
     }
 }

@@ -27,10 +27,10 @@ public class Money {
     }
 
     static public Money dollar(int amount) {
-        return new Dollar(amount, "USD");
+        return new Money(amount, "USD");
     }
 
     static public Money franc(int amount, String currency) {
-        return new Franc(amount, currency);
+        return new Money(amount, currency);
     }
 }

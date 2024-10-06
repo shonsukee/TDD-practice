@@ -1,5 +1,6 @@
 package money;
 
+// 被加算数と加算数のペア，
 public class Pair {
     private String from;
     private String to;
@@ -14,6 +15,6 @@ public class Pair {
     }
 
     public int hashCode() {
-        return 0;
+        return from.hashCode() + to.hashCode();
     }
 }

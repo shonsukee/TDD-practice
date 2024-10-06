@@ -99,4 +99,22 @@ public class MoneyTest {
         result = bank.reduce(sum, "USD");
         assertEquals(Money.dollar(25), result);
     }
+
+    @Test
+    public void testPairEquality() {
+        Pair pair = new Pair("CHF", "USD");
+        Pair pair1 = new Pair("CHF", "USD");
+        Pair pair2 = new Pair("CHF", "JPY");
+        assertTrue(pair.equals(pair1));
+        assertFalse(pair.equals(pair2));
+    }
+
+    @Test
+    public void testPairHashCode() {
+        Pair pair = new Pair("CHF", "USD");
+        Pair pair1 = new Pair("CHF", "USD");
+        System.out.println(pair.hashCode());
+        System.out.println(pair1.hashCode());
+        assertEquals(pair.hashCode(), pair1.hashCode());
+    }
 }

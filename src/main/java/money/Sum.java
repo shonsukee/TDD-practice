@@ -1,6 +1,6 @@
 package money;
 
-class Sum implements Expression {
+class Sum extends MoneyExpression {
     Expression augend;
     Expression addend;
 
@@ -17,9 +17,5 @@ class Sum implements Expression {
         // 通貨を換算してから計算
         int amount = augend.reduce(bank, to).amount + addend.reduce(bank, to).amount;
         return new Money(amount, to);
-    }
-
-    public Expression plus(Expression addend) {
-        return new Sum(this, addend);
     }
 }

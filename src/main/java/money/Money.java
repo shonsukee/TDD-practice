@@ -1,6 +1,6 @@
 package money;
 
-class Money implements Expression {
+class Money extends MoneyExpression {
     protected int amount;
     protected String currency;
 
@@ -11,10 +11,6 @@ class Money implements Expression {
 
     public Expression times(int multiplier){
         return new Money(amount*multiplier, currency);
-    }
-
-    public Expression plus(Expression addend){
-        return new Sum(this, addend);
     }
 
     public Money reduce(Bank bank, String to){

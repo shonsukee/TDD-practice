@@ -9,16 +9,18 @@ class Money extends MoneyExpression {
         this.currency = currency;
     }
 
+    @Override
     public Expression times(int multiplier){
         return new Money(amount*multiplier, currency);
     }
 
+    @Override
     public Money reduce(Bank bank, String to){
         int rate = bank.rate(currency, to);
         return new Money(amount / rate, to);
     }
 
-    String currency() {
+    public String currency() {
         return currency;
     }
 
@@ -27,6 +29,9 @@ class Money extends MoneyExpression {
     }
 
     public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+
         Money money = (Money) object;
         return amount == money.amount && currency().equals(money.currency());
     }
